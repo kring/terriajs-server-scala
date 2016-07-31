@@ -17,7 +17,7 @@ object WebServer {
 
     val route =
       path("ping")(complete("OK")) ~
-      pathPrefix("proxy" ~ Slash)(new Proxy(system, materializer).route)
+      pathPrefix("proxy")(new Proxy(system, materializer).route)
 
     val bindingFuture = Http(system).bindAndHandle(route, "localhost", 8080)
  
